@@ -1,0 +1,19 @@
+CREATE TABLE Budget (
+    budgetId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    budgetMonth	TEXT,
+    budgetAmount INTEGER,
+    createdDateInt INTEGER,
+    updatedDateInt INTEGER
+);
+
+select_all_budget:
+Select * from Budget;
+
+insert_budget:
+insert into Budget(budgetMonth,budgetAmount,createdDateInt,updatedDateInt) values (?,?,?,?);
+
+delete_budget:
+delete from Budget where budgetId=?;
+
+update_budget:
+update Budget set budgetMonth=? where budgetId=?;

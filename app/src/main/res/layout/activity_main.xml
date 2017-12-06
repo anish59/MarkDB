@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.markdb.MainActivity">
+
+    <Button
+        android:id="@+id/btnInsert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/insert_data" />
+
+    <Button
+        android:id="@+id/btnShowResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/btnInsert"
+        android:text="@string/show_result" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnInsert"
+        android:layout_margin="8dp"
+        android:background="@color/lightGrey" />
+
+    <View
+        android:id="@+id/viewOne"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@id/txtResult"
+        android:layout_margin="10dp"
+        android:background="#000000" />
+
+    <EditText
+        android:id="@+id/edtDeleteId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewOne"
+        android:layout_margin="8dp"
+        android:hint="@string/enter_id_you_want_to_delete" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtDeleteId"
+        android:layout_centerHorizontal="true"
+        android:text="@string/delete" />
+
+    <View
+        android:id="@+id/viewTwo"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/btnDelete"
+        android:layout_margin="10dp"
+        android:background="#000000" />
+
+    <EditText
+        android:id="@+id/edtUpdateId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewTwo"
+        android:layout_margin="8dp"
+        android:hint="@string/update_id" />
+
+    <EditText
+        android:id="@+id/edtMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtUpdateId"
+        android:layout_margin="8dp"
+        android:hint="@string/update_month" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtMonth"
+        android:layout_centerHorizontal="true"
+        android:text="@string/update" />
+
+
+</RelativeLayout>

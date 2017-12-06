@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MarkDB</string>
+    <string name="insert_data">Insert Data</string>
+    <string name="show_result">Show Result</string>
+    <string name="nothing_to_show">There is nothing to show</string>
+    <string name="enter_id_you_want_to_delete">Enter Id you want to delete</string>
+    <string name="delete">Delete</string>
+    <string name="id_data_to_update">Id data to update</string>
+    <string name="update_id">Update Id</string>
+    <string name="update_month">Update Month</string>
+    <string name="update">Update</string>
+</resources>
