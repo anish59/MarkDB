@@ -63,5 +63,4 @@ public abstract class Budget implements BudgetModel {
         DataBaseManger.getInstance().closeDatabase();
     }
 
-
 }

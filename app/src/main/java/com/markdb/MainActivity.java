@@ -1,6 +1,7 @@
 package com.markdb;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -29,11 +30,13 @@ public class MainActivity extends AppCompatActivity {
     private android.widget.EditText edtUpdateId;
     private android.widget.EditText edtMonth;
     private Button btnUpdate;
+    private Button btnFillExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.btnFillExpense = (Button) findViewById(R.id.btnFillExpense);
         this.btnUpdate = (Button) findViewById(R.id.btnUpdate);
         this.edtMonth = (EditText) findViewById(R.id.edtMonth);
         this.edtUpdateId = (EditText) findViewById(R.id.edtUpdateId);
@@ -95,6 +98,13 @@ public class MainActivity extends AppCompatActivity {
 
                 Budget.updateBudget(Long.parseLong(id), month);
                 showData();
+            }
+        });
+
+        btnFillExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
             }
         });
     }

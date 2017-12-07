@@ -9,4 +9,6 @@
     <string name="update_id">Update Id</string>
     <string name="update_month">Update Month</string>
     <string name="update">Update</string>
+    <string name="go_to_expense">Go to Expense</string>
+    <string name="notify_list">notify List</string>
 </resources>
