@@ -1,7 +1,13 @@
 CREATE TABLE Expense (
     expenseId INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    budget INTEGER,
+    budgetId INTEGER,
     expenseAmount INTEGER,
     createdDateInt INTEGER,
     updateDateInt INTEGER
 );
+
+select_all_expense:
+Select * from Expense;
+
+insert_into_expense:
+insert into Expense(budgetId,expenseAmount,createdDateInt,updateDateInt) values(?,?,?,?);

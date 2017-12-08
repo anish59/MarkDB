@@ -11,4 +11,5 @@
     <string name="update">Update</string>
     <string name="go_to_expense">Go to Expense</string>
     <string name="notify_list">notify List</string>
+    <string name="insert">Insert</string>
 </resources>
