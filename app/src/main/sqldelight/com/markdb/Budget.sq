@@ -17,3 +17,9 @@ delete from Budget where budgetId=?;
 
 update_budget:
 update Budget set budgetMonth=? where budgetId=?;
+
+show_detail:
+select * from Budget
+inner join Expense
+ on Budget.budgetId=Expense.budgetId
+where Budget.budgetId=?;

@@ -19,6 +19,7 @@ import java.util.List;
 public abstract class Budget implements BudgetModel {
     public static final Factory<Budget> BUDGET_FACTORY = new Factory<>(AutoValue_Budget::new);
     public static final RowMapper<Budget> ROW_MAPPER = BUDGET_FACTORY.select_all_budgetMapper();
+    public static final RowMapper<ExpenditureDetail> EXPENDITURE_DETAIL_ROW_MAPPER = BUDGET_FACTORY.show_detailMapper(AutoValue_Budget_ExpenditureDetail::new, Expense.EXPENSE_FACTORY);
 
     public static void insertBudget(String budgetMonth, long budgetAmount, long createdDateInt, long updatedDateInt) {
         SQLiteDatabase sqLiteDatabase = DataBaseManger.getInstance().openDatabase();
@@ -43,6 +44,7 @@ public abstract class Budget implements BudgetModel {
         return budgets;
     }
 
+
     public static void deleteBudget(long budgetID) {
         SQLiteDatabase sqLiteDatabase = DataBaseManger.getInstance().openDatabase();
 
@@ -61,6 +63,26 @@ public abstract class Budget implements BudgetModel {
 
         update_budget.program.executeUpdateDelete();
         DataBaseManger.getInstance().closeDatabase();
+    }
+
+    public static List<ExpenditureDetail> showAllDetail(long budgetId) {
+        List<ExpenditureDetail> expenditureDetails = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = DataBaseManger.getInstance().openDatabase();
+
+        SqlDelightStatement sqlDelightStatement = BUDGET_FACTORY.show_detail(budgetId);
+        Cursor cursor = sqLiteDatabase.rawQuery(sqlDelightStatement.statement, sqlDelightStatement.args);
+
+        while (cursor.moveToNext()) {
+            expenditureDetails.add(Budget.EXPENDITURE_DETAIL_ROW_MAPPER.map(cursor));
+        }
+        DataBaseManger.closeCursor(cursor);
+        DataBaseManger.getInstance().closeDatabase();
+        return expenditureDetails;
+    }
+
+
+    @AutoValue
+    public abstract static class ExpenditureDetail implements Budget.Show_detailModel<Budget, Expense> {
     }
 
 }

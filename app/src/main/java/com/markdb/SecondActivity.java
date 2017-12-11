@@ -3,6 +3,7 @@ package com.markdb;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -24,11 +25,13 @@ public class SecondActivity extends AppCompatActivity {
     private android.widget.Button btnNotify;
     private Button btnInsert;
     private android.widget.TextView txtShowResult;
+    private Button btnShowAllData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        this.btnShowAllData = (Button) findViewById(R.id.btnShowAllData);
         this.txtShowResult = (TextView) findViewById(R.id.txtShowResult);
         this.btnInsert = (Button) findViewById(R.id.btnInsert);
         this.btnNotify = (Button) findViewById(R.id.btnNotify);
@@ -61,6 +64,15 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
+        btnShowAllData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                List<Budget.ExpenditureDetail> expenditures = Budget.showAllDetail(6);//hardcoded argument
+                for (int i = 0; i < expenditures.size(); i++) {
+                    Log.e("Dats: [" + i + "] ", "Month :" + expenditures.get(i).Budget().budgetMonth() + " ExpenseAmount: " + expenditures.get(i).Expense().expenseAmount());
+                }
+            }
+        });
     }
 }
 

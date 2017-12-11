@@ -15,7 +15,7 @@ import java.util.List;
  */
 @AutoValue
 public abstract class Expense implements ExpenseModel {
-    private static final Factory<Expense> EXPENSE_FACTORY = new Factory<>(AutoValue_Expense::new);
+    public static final Factory<Expense> EXPENSE_FACTORY = new Factory<>(AutoValue_Expense::new);
     private static final RowMapper<Expense> EXPENSE_ROW_MAPPER = EXPENSE_FACTORY.select_all_expenseMapper();
 
     public static void insertExpenseData(long budgetId, long expenseAmount, long createdDateInt, long updateDateInt) {

@@ -12,4 +12,5 @@
     <string name="go_to_expense">Go to Expense</string>
     <string name="notify_list">notify List</string>
     <string name="insert">Insert</string>
+    <string name="show_expenditure">Show Expenditure</string>
 </resources>

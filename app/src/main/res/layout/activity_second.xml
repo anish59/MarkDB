@@ -32,4 +32,11 @@
         android:id="@+id/txtShowResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnShowAllData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_expenditure" />
+
 </LinearLayout>
