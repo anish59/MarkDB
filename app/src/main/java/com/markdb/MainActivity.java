@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.markdb.models.Budget;
+import com.markdb.models.BudgetRequest;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -51,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
         initListener(time);
         showData();
-
     }
 
     private void initListener(long time) {
@@ -88,16 +89,20 @@ public class MainActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String id = edtUpdateId.getText().toString();
-                String month = edtMonth.getText().toString();
+//                String id = edtUpdateId.getText().toString();
+//                String month = edtMonth.getText().toString();
+//
+//                if (TextUtils.isEmpty(id) || TextUtils.isEmpty(month)) {
+//                    Toast.makeText(MainActivity.this, "Please enter Update data", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//
+//                Budget.updateBudget(Long.parseLong(id), month);
+//                showData();
 
-                if (TextUtils.isEmpty(id) || TextUtils.isEmpty(month)) {
-                    Toast.makeText(MainActivity.this, "Please enter Update data", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                Budget.updateBudget(Long.parseLong(id), month);
-                showData();
+                Budget budgetRequest = new BudgetRequest();
+                budgetRequest = Budget.getIdDetail(2);
+                Log.e("", "sdsdsd");
             }
         });
 

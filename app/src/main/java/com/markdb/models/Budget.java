@@ -19,6 +19,7 @@ import java.util.List;
 public abstract class Budget implements BudgetModel {
     public static final Factory<Budget> BUDGET_FACTORY = new Factory<>(AutoValue_Budget::new);
     public static final RowMapper<Budget> ROW_MAPPER = BUDGET_FACTORY.select_all_budgetMapper();
+
     public static final RowMapper<ExpenditureDetail> EXPENDITURE_DETAIL_ROW_MAPPER = BUDGET_FACTORY.show_detailMapper(AutoValue_Budget_ExpenditureDetail::new, Expense.EXPENSE_FACTORY);
 
     public static void insertBudget(String budgetMonth, long budgetAmount, long createdDateInt, long updatedDateInt) {
@@ -42,6 +43,21 @@ public abstract class Budget implements BudgetModel {
         DataBaseManger.closeCursor(cursor);
         DataBaseManger.getInstance().closeDatabase();
         return budgets;
+    }
+
+    public static Budget getIdDetail(long budgetId) {
+        Budget budget = new BudgetRequest();
+        SQLiteDatabase sqLiteDatabase = DataBaseManger.getInstance().openDatabase();
+        SqlDelightStatement sqlDelightStatement = BUDGET_FACTORY.select_only_name(budgetId);
+        Cursor cursor = sqLiteDatabase.rawQuery(sqlDelightStatement.statement, sqlDelightStatement.args);
+        if (cursor != null && cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            do {
+                budget =  Budget.ROW_MAPPER.map(cursor);
+            } while (cursor.moveToNext());
+        }
+
+        return budget;
     }
 
 
